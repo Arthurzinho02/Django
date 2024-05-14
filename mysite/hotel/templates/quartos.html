@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+    Quartos
+{% endblock %}
+
+
+{% block body %}
+    {% for item in dados_quarto %}
+    <div class="m-5 d-flex justify-content-center align-items-center flex-column">
+        <h1>{{item.tipo}}</h1>
+        <img src="{{item.foto_quarto.url}}" alt="quarto"width="300" height="200" class="d-inline-block align-text-top"/>
+        <div class="d-flex justify-content-center align-items-center flex-row gap-3">
+            <p>Valor: {{item.valor}}</p>
+            <p>Disponibilidade: {{item.disponibilidade}}</p>
+        </div>
+        <p>{{item.descricao}}</p>
+    </div>
+{% endfor %}
+{% endblock %}

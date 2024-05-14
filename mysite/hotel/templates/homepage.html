@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block title %}
+    Hotel SENAI
+{% endblock %}
+
+
+
+{% block body %}
+    {% for item in dados_hotel %}
+        <div class="p-5 text-center">
+        <h1>Bem-vindos ao {{item.titulo}}!</h1>
+        <h3>{{item.descricao}}</h3>
+        </div>
+    {% endfor %}
+{% endblock %}
