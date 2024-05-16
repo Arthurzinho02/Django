@@ -5,17 +5,30 @@
     Quartos
 {% endblock %}
 
-
 {% block body %}
-    {% for item in dados_quarto %}
-    <div class="m-5 d-flex justify-content-center align-items-center flex-column">
-        <h1>{{item.tipo}}</h1>
-        <img src="{{item.foto_quarto.url}}" alt="quarto"width="300" height="200" class="d-inline-block align-text-top"/>
-        <div class="d-flex justify-content-center align-items-center flex-row gap-3">
-            <p>Valor: {{item.valor}}</p>
-            <p>Disponibilidade: {{item.disponibilidade}}</p>
+    <div class="container my-5">
+        <div class="row">
+            {% for item in dados_quarto %}
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <img src="{{item.foto_quarto.url}}" class="card-img-top" alt="quarto">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.tipo}}</h5>
+                        <p class="card-text">Valor: {{item.valor}}</p>
+                        <p class="card-text">Disponibilidade: {{item.disponibilidade}}</p>
+                        <p class="card-text">{{item.descricao}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        <p>{{item.descricao}}</p>
     </div>
-{% endfor %}
+
+    <style>
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+    </style>
 {% endblock %}
