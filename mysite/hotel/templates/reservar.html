@@ -1,56 +1,56 @@
 {% extends 'index.html' %}
 {% load static %}
 
-
 {% block title %}
 Reserva
 {% endblock %}
 
-
+{% block nav %}
+    {% include 'nav.html' %}
+{% endblock %}
 
 {% block body %}
-    <div class="p-5 d-flex justify-content-center align-items-center">
-        <form action="reservar" method="post" class="bg-danger-subtle d-flex flex-column p-5 rounded gap-3 w-75 h-50">
-            <!-- o token é questão de segurança,para limitar o acesso -->
-            {% csrf_token %}
-            <div class="d-flex justify-content-center align-items-center">
-                <h1>Reserve agora!</h1>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form action="reservar" method="post" class="bg-light p-5 rounded shadow">
+                    {% csrf_token %}
+                    <h1 class="text-center mb-4">Reserve agora!</h1>
+                    <div class="mb-3">
+                        {{ form.nome.label_tag }}
+                        {{ form.nome }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.sobrenome.label_tag }}
+                        {{ form.sobrenome }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.email.label_tag }}
+                        {{ form.email }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.idade.label_tag }}
+                        {{ form.idade }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.endereco.label_tag }}
+                        {{ form.endereco }}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.quarto.label_tag }}
+                            {{ form.quarto }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.data.label_tag }}
+                            {{ form.data }}
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" value="Enviar" class="btn btn-danger">
+                    </div>
+                </form>
             </div>
-            <!-- <div class="d-flex flex-row gap-5"> -->
-                <div class="d-flex flex-column w-25">
-                    {{ form.nome.label }}
-                    {{ form.nome }}
-                </div>
-                <div class="d-flex flex-column w-50">
-                    {{ form.sobrenome.label }}
-                    {{ form.sobrenome }}
-                </div>
-            <!-- </div> -->
-            <div class="d-flex flex-column w-50">
-                {{ form.email.label }}
-                {{ form.email }}
-            </div>
-            <div class="d-flex flex-column w-25">
-                {{ form.idade.label }}
-                {{ form.idade }}
-            </div>
-            <div class="d-flex flex-column w-50">
-                {{ form.endereco.label }}
-                {{ form.endereco }}
-            </div>
-            <div class="d-flex flex-row justify-content-center align-items-center gap-5">
-                <div>
-                    {{ form.quarto.label }}
-                    {{ form.quarto }}
-                </div>
-                <div>
-                    {{ form.data.label }}
-                    {{ form.data }}
-                </div>
-            </div>
-            <div class="d-flex justify-content-center align-items-center">
-            <input type="submit" value="Enviar" class="bg-danger rounded border border-danger">
-            </div>
-        </form>
+        </div>
     </div>
 {% endblock %}

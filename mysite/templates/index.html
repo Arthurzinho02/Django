@@ -13,10 +13,10 @@
     {% endblock %}
 </head>
 <body>
-    {% include 'nav.html' %}
+    {% block nav %}
+    {% endblock %}
 
     {% block body %}
-
     {% endblock %}
 
     {% include 'footer.html' %}

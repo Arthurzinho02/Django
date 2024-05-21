@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+Cadastro
+{% endblock %}
+
+{% block nav %}
+    {% include 'nav2.html' %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-danger text-white">Cadastro</div>
+                <div class="card-body">
+                    <form action="cadastro" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ form.first_name.label }}
+                            {{ form.first_name }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.last_name.label }}
+                            {{ form.last_name }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.user.label }}
+                            {{ form.user }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.email.label }}
+                            {{ form.email }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.password.label }}
+                            {{ form.password }}
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" class="btn btn-danger btn-block" value="Cadastrar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
